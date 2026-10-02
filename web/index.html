@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6f2">
+  <title>Thư viện | Tra cứu và yêu cầu mượn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Thư viện, trang chủ">
+      <span class="brand-mark" aria-hidden="true">L</span>
+      <span><strong>THƯ VIỆN</strong><small>Danh mục trực tuyến</small></span>
+    </a>
+    <a class="top-link" href="#tra-cuu">Tra cứu sách <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow">THƯ VIỆN TRƯỜNG</p>
+        <h1 id="page-title">Tìm sách.<br><em>Gửi yêu cầu mượn.</em></h1>
+        <p class="intro-note">Danh mục hiện có tại thư viện, được cập nhật theo lần đồng bộ gần nhất.</p>
+      </div>
+      <div class="sync-status"><span class="status-dot"></span><span id="sync-label">Đang tải danh mục</span></div>
+    </section>
+
+    <section class="workspace" id="tra-cuu">
+      <div class="catalog-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">DANH MỤC</p><h2>Tra cứu tài liệu</h2></div>
+          <span id="catalog-count" class="count-label">0 tài liệu</span>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Tên sách, mã sách, tác giả..." autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+        <div id="catalog-list" class="catalog-list" aria-live="polite"></div>
+        <p id="catalog-message" class="feedback" role="status"></p>
+      </div>
+
+      <aside class="request-panel">
+        <div class="section-heading request-heading">
+          <div><p class="eyebrow">PHIẾU ĐỀ NGHỊ</p><h2>Yêu cầu mượn</h2></div>
+          <span class="step-mark">01</span>
+        </div>
+        <form id="request-form">
+          <div class="form-grid">
+            <label class="field field-wide">Mã độc giả
+              <input name="reader_code" required maxlength="40" placeholder="Mã trên thẻ thư viện">
+            </label>
+            <label class="field field-wide">Họ và tên
+              <input name="name" required minlength="2" maxlength="120" autocomplete="name">
+            </label>
+            <label class="field">Đối tượng
+              <select name="requester_type" required>
+                <option value="Học sinh">Học sinh</option>
+                <option value="Giáo viên">Giáo viên</option>
+              </select>
+            </label>
+            <label class="field">Lớp / bộ môn
+              <input name="class_name" maxlength="80">
+            </label>
+            <label class="field field-wide">Email hoặc số điện thoại
+              <input name="contact" maxlength="160" placeholder="Để thư viện liên hệ khi cần">
+            </label>
+          </div>
+          <div class="selected-heading"><span>Danh sách đề nghị</span><span id="selected-count">0</span></div>
+          <div id="selected-list" class="selected-list"><p class="empty-state">Chưa chọn tài liệu</p></div>
+          <label class="field note-field">Ghi chú
+            <textarea name="note" rows="2" maxlength="1000" placeholder="Không bắt buộc"></textarea>
+          </label>
+          <button class="submit-button" type="submit">Gửi phiếu yêu cầu <span aria-hidden="true">→</span></button>
+          <p id="form-message" class="feedback" role="status"></p>
+        </form>
+        <div id="tracking-result" class="tracking-result" hidden></div>
+      </aside>
+    </section>
+
+    <section class="tracking-section">
+      <div><p class="eyebrow">THEO DÕI</p><h2>Tra cứu kết quả</h2></div>
+      <form id="tracking-form" class="tracking-form">
+        <label class="field">Mã yêu cầu<input name="request_id" type="number" min="1" required></label>
+        <label class="field">Mã tra cứu<input name="token" required autocomplete="off"></label>
+        <button class="outline-button" type="submit">Xem trạng thái</button>
+      </form>
+      <p id="tracking-message" class="feedback" role="status"></p>
+    </section>
+  </main>
+
+  <footer><span>THƯ VIỆN TRƯỜNG</span><span id="footer-sync">Danh mục trực tuyến</span></footer>
+</body>
+</html>

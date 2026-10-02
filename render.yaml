@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: library-manager-online
+    env: python
+    plan: free
+    buildCommand: pip install -r server_requirements.txt
+    startCommand: uvicorn web_portal:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: LIBRARY_ADMIN_TOKEN
+        sync: false
+      - key: LIBRARY_REMOTE_DB
+        value: /tmp/library_remote.db
+      - key: PORT
+        value: 8000
