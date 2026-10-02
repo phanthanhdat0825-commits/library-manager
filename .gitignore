@@ -1,0 +1,12 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+build/
+dist/
+*.spec
+.env
+.DS_Store
